@@ -47,9 +47,8 @@
           <li class="item">
             <a class="link link-contacts" href="mailto:info@devstudio.com">
               <svg class="icon icon-mail">
-                <use href="./images/icons.svg#envelope"></use></svg
-              >info@devstudio.com</a
-            >
+                <use href="./images/icons.svg#envelope"></use>
+            </svg>info@devstudio.com</a>
           </li>
           <li class="item">
             <a class="link link-contacts" href="tel:+380961111111">
@@ -523,7 +522,7 @@
             </address>
           </li>
         <li class="list footer-item">
-          <p class="title">Присоединяйтесь</p>
+          <h2 class="title">Присоединяйтесь</h2>
           <ul class="list social-list">
             <li class="social-item">
               <a
@@ -575,18 +574,66 @@
             </li>
           </ul>
         </li>
+        <li class="footer-item">
+          <h2 class="title">Подпишитесь на рассылку</h2>
+          <form class="signup-form" name="signup_form" autocomplete="off">
+            <label for="user_mail"></label>
+              <input class="signup-form-input" type="email" name="email" placeholder="E-mail" id="user_mail"/>
+            <button type="submit" class="hero-button signup-button">Подписаться
+              <svg class="signup-icon">
+              <use href="./images/icons.svg#icon-send"></use></svg>
+            </button>
+          </form>
+        </li>
         </ul>
       </div>
     </footer>
     <div class="backdrop is-hidden" data-modal>
-           <div class="modal">
-              <button type="button" class="modal-close" data-modal-close>
-                <svg class="close-icon">
-                  <use href="./images/icons.svg#close-button"></use>
-                </svg>
-              </button>
-            </div>
+      <div class="modal">
+        <button type="button" class="modal-close" data-modal-close>
+          <svg class="modal-icon"><use href="./images/icons.svg#close-button"></use></svg>
+        </button>
+        <form name="contacts_form" class="hero-modal" autocomplete="off">
+          <div role="group" class="modal-group">
+          <strong class="title"> Оставьте свои данные, мы вам перезвоним</strong>
+          <label class="modal-item">
+            <span class="modal-text">Имя</span>
+            <input class="modal-input" type="text" name="username">
+            <svg class="modal-icon">
+              <use href="./images/icons.svg#person-modal"></use>
+            </svg>
+          </label>
+          <label class="modal-item">
+            <span class="modal-text">Телефон</span>
+            <input class="modal-input" type="tel" name="tel">
+            <svg class="modal-icon">
+              <use href="./images/icons.svg#phone-modal"></use>
+            </svg>
+          </label>
+          <label class="modal-item">
+            <span class="modal-text">Почта</span>
+            <input class="modal-input" type="email" name="email">
+            <svg class="modal-icon">
+              <use href="./images/icons.svg#email-modal"></use>
+            </svg>
+          </label>
+          <label class="modal-item modal-comment">
+            <span class="modal-text">Комментарий</span>
+            <textarea class="modal-textarea" name="feedback" rows="8" placeholder="Введите текст"></textarea>
+          </label>
           </div>
+          <label class="modal-agreement">
+            <input class="agreement-checkbox checkbox-hidden" type="checkbox" name="user-agreement" value="agreement">
+            <svg class="agreement-icon" width="16" height="15">
+              <use class="agreement-icon-uncheck" href="./images/icons.svg#icon-uncheck"></use>
+              <use class="agreement-icon-check" href="./images/icons.svg#icon-check"></use>
+            </svg>
+            <span>Соглашаюсь с рассылкой и принимаю <a href="" class="modal-agreement-link">Условия договора</a></span>
+          </label>
+          <button class="hero-button send-button" type="submit">Отправить</button>
+        </form>
+      </div>
+    </div>
     <script src="./js/modal.js"></script>
   </body>
 </html>

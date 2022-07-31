@@ -10,7 +10,6 @@
   --text-white: #ffffff;
   --text-grey: #757575;
   --text-footer: #fff9;
-  --button-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   --basic-item-margin: 30px;
   --basic-item: 3;
   --center-border: #ececec;
@@ -22,11 +21,16 @@
   --filter-button-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
   --portfolio-item-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
   --hero-button-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  --footer-button-shadow: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
   --modal-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
   --portfolio-overlay-color: rgba(33, 150, 243, 0.9);
   --backdrop-color: rgba(0, 0, 0, 0.2);
   --timing-function: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   --close-icon-border: rgba(0, 0, 0, 0.1);
+  --footer-signup-email: 1px solid rgba(255, 255, 255, 0.3);
+  --placeholder-color: rgba(255, 255, 255, 0.6);
+  --modal-input-border: 1px solid rgba(33, 33, 33, 0.2);
+  --textarea-placeholder-color: rgba(117, 117, 117, 0.5);
 }
 
 body {
@@ -175,7 +179,6 @@ img {
 .link-contacts:hover,
 .link-contacts:focus {
   color: var(--logo-blue);
-
 }
 
 .current-page {
@@ -284,8 +287,7 @@ img {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1);
-  transition: transform var(--timing-function);
+  padding: 40px;
 
   min-width: 528px;
   min-height: 581px;
@@ -293,6 +295,37 @@ img {
 
   background-color: var(--text-white);
   box-shadow: var(--modal-shadow);
+
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform var(--timing-function);
+}
+
+.hero-modal .title {
+  display: block;
+  margin-bottom: 12px;
+  
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 0.86;
+  text-transform: none;
+  text-align: center;
+
+}
+.modal-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  margin-bottom: 10px; 
+
+  font-size: 12px;
+  line-height: 0.86;
+  letter-spacing: 0.01em;
+  color: var(--text-grey);
+}
+.modal-comment {
+  margin-bottom: 20px;
 }
 
 .modal-close {
@@ -310,11 +343,112 @@ img {
   cursor: pointer;
 }
 
-.close-icon {
+.modal-close:hover .modal-icon,
+.modal-close:focus .modal-icon {
+  fill: var(--logo-blue);
+}
+
+.modal-group {
+  
+}
+.modal-icon {
   width: 18px;
   height: 18px;
   fill: var(--logo-black);
+  
+  transition: fill var(--timing-function);
 }
+.modal-item .modal-icon {
+  position: absolute;
+  top: 25px;
+  left: 12px;
+}
+.modal-input {
+  padding: 12px 42px;
+  height: 40px;
+
+  border: var(--modal-input-border);
+  border-radius: 4px;
+  outline: none;
+
+  transition: border var(--timing-function);
+}
+
+.modal-input:hover ~ .modal-icon,
+.modal-input:focus ~ .modal-icon {
+  fill: var(--logo-blue);
+}
+.modal-input:hover,
+.modal-input:focus,
+.modal-textarea:hover,
+.modal-textarea:focus {
+  border-color: var(--logo-blue);
+  
+}
+
+.send-button {
+  display: block;
+}
+
+.modal-textarea {
+  resize: none;
+  padding: 12px 16px;
+
+  max-height: 120px;
+  border: var(--modal-input-border);
+  border-radius: 4px;
+  outline: none;
+
+  transition: border var(--timing-function);
+}
+.modal-textarea::placeholder {
+  font-size: 14px;
+  line-height: 0.87;
+  letter-spacing: 0.01em;
+
+  color: var(--textarea-placeholder-color);
+}
+
+.modal-agreement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 30px;
+  gap: 7px;
+}
+
+.modal-agreement-link {
+  color: var(--logo-blue);
+}
+
+/* Checkbox*/
+
+.checkbox-hidden {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+
+  position: absolute;
+}
+.agreement-icon {
+transition: background-color var(--timing-function), fill var(--timing-function);
+}
+.agreement-icon-check {
+  opacity: 0;
+}
+.agreement-checkbox:checked + .agreement-icon .agreement-icon-uncheck {
+  opacity: 0;
+}
+.agreement-checkbox:checked + .agreement-icon .agreement-icon-check {
+  opacity: 1;
+  fill: var(--text-white);
+}
+.agreement-checkbox:checked + .agreement-icon{
+  background-color: var(--logo-blue);
+  border-radius: 2px;
+}
+
 
 /*Buttons*/
 
@@ -331,11 +465,17 @@ img {
   line-height: 1.87;
   background-color: var(--logo-blue);
   color: var(--text-white);
-  box-shadow: var(--hero-button-shadow);
   letter-spacing: 0.06em;
   cursor: pointer;
   border-radius: 4px;
   font-family: inherit;
+
+  transition: box-shadow var(--timing-function);
+}
+
+.hero-button:hover,
+.hero-button:focus {
+  box-shadow: var(--hero-button-shadow);
 }
 
 .filter-button:hover,
@@ -680,4 +820,44 @@ img {
 
 .footer .social-icon {
   fill: var(--text-white);
+}
+
+/* Footer signup*/
+
+.signup-form-input {
+  padding: 15px 0 15px 16px;
+  width: 358px;
+  height: 50px;
+  background-color: transparent;
+  outline: transparent;
+  border-radius: 4px;
+  border: var(--footer-signup-email);
+  filter: var(--footer-button-shadow)
+}
+
+.signup-form-input::placeholder {
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+  color: var(--placeholder-color);
+}
+
+.signup-form {
+  display: flex;
+  align-items: center;
+}
+
+.signup-button {
+  display: flex;
+  margin-left: 12px;
+  padding: 10px;
+  padding-left: 29px;
+  padding-right: 28px;
+  justify-content: space-between;
+  align-items: center;
+}
+.signup-icon {
+  width: 24px;
+  height: 24px;
+  fill:currentColor
 }
