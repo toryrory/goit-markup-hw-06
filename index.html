@@ -521,7 +521,7 @@
               </ul>
             </address>
           </li>
-        <li class="list footer-item">
+        <li class="footer-item">
           <h2 class="title">Присоединяйтесь</h2>
           <ul class="list social-list">
             <li class="social-item">
@@ -577,7 +577,6 @@
         <li class="footer-item">
           <h2 class="title">Подпишитесь на рассылку</h2>
           <form class="signup-form" name="signup_form" autocomplete="off">
-            <label for="user_mail"></label>
               <input class="signup-form-input" type="email" name="email" placeholder="E-mail" id="user_mail"/>
             <button type="submit" class="hero-button signup-button">Подписаться
               <svg class="signup-icon">
@@ -598,26 +597,32 @@
           <strong class="title"> Оставьте свои данные, мы вам перезвоним</strong>
           <label class="modal-item">
             <span class="modal-text">Имя</span>
+            <span class="modal-wrapper">
             <input class="modal-input" type="text" name="username">
             <svg class="modal-icon">
               <use href="./images/icons.svg#person-modal"></use>
             </svg>
+            </span>
           </label>
           <label class="modal-item">
             <span class="modal-text">Телефон</span>
+            <span class="modal-wrapper">
             <input class="modal-input" type="tel" name="tel">
             <svg class="modal-icon">
               <use href="./images/icons.svg#phone-modal"></use>
             </svg>
+            </span>
           </label>
           <label class="modal-item">
             <span class="modal-text">Почта</span>
+            <span class="modal-wrapper">
             <input class="modal-input" type="email" name="email">
             <svg class="modal-icon">
               <use href="./images/icons.svg#email-modal"></use>
             </svg>
+            </span>
           </label>
-          <label class="modal-item modal-comment">
+          <label class="modal-item">
             <span class="modal-text">Комментарий</span>
             <textarea class="modal-textarea" name="feedback" rows="8" placeholder="Введите текст"></textarea>
           </label>
@@ -630,7 +635,7 @@
             </svg>
             <span>Соглашаюсь с рассылкой и принимаю <a href="" class="modal-agreement-link">Условия договора</a></span>
           </label>
-          <button class="hero-button send-button" type="submit">Отправить</button>
+          <button class="hero-button" type="submit">Отправить</button>
         </form>
       </div>
     </div>

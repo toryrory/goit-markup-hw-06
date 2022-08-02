@@ -31,6 +31,7 @@
   --placeholder-color: rgba(255, 255, 255, 0.6);
   --modal-input-border: 1px solid rgba(33, 33, 33, 0.2);
   --textarea-placeholder-color: rgba(117, 117, 117, 0.5);
+  --background-button-active: #188CE8;
 }
 
 body {
@@ -306,26 +307,24 @@ img {
   
   font-weight: 700;
   font-size: 20px;
-  line-height: 0.86;
+  line-height: 1.15;
   text-transform: none;
   text-align: center;
 
 }
 .modal-item {
-  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-
-  margin-bottom: 10px; 
+  gap: 4px; 
 
   font-size: 12px;
-  line-height: 0.86;
+  line-height: 1.16;
   letter-spacing: 0.01em;
   color: var(--text-grey);
 }
-.modal-comment {
-  margin-bottom: 20px;
+
+.modal-item:not(:last-child) {
+  margin-bottom: 10px;
 }
 
 .modal-close {
@@ -349,22 +348,28 @@ img {
 }
 
 .modal-group {
-  
+  margin-bottom: 20px;
 }
 .modal-icon {
   width: 18px;
   height: 18px;
   fill: var(--logo-black);
-  
+
   transition: fill var(--timing-function);
+} 
+.modal-wrapper {
+  position: relative;
 }
 .modal-item .modal-icon {
   position: absolute;
-  top: 25px;
+  top: 50%;
   left: 12px;
+  transform: translateY(-50%);
 }
+
 .modal-input {
   padding: 12px 42px;
+  width: 100%;
   height: 40px;
 
   border: var(--modal-input-border);
@@ -384,10 +389,6 @@ img {
 .modal-textarea:focus {
   border-color: var(--logo-blue);
   
-}
-
-.send-button {
-  display: block;
 }
 
 .modal-textarea {
@@ -413,6 +414,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   margin-bottom: 30px;
   gap: 7px;
@@ -448,12 +450,24 @@ transition: background-color var(--timing-function), fill var(--timing-function)
   background-color: var(--logo-blue);
   border-radius: 2px;
 }
-
+.agreement-checkbox:hover + .agreement-icon .agreement-icon-uncheck,
+.agreement-checkbox:focus + .agreement-icon .agreement-icon-uncheck {
+  fill: var(--logo-blue);
+}
+/*
+.modal-agreement:hover,
+.modal-agreement:focus {
+  fill: var(--logo-blue);
+} */ 
 
 /*Buttons*/
 
 
 .hero-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   margin-left: auto;
   margin-right: auto;
   min-width: 200px;
@@ -465,6 +479,7 @@ transition: background-color var(--timing-function), fill var(--timing-function)
   line-height: 1.87;
   background-color: var(--logo-blue);
   color: var(--text-white);
+  box-shadow: var(--hero-button-shadow);
   letter-spacing: 0.06em;
   cursor: pointer;
   border-radius: 4px;
@@ -475,7 +490,7 @@ transition: background-color var(--timing-function), fill var(--timing-function)
 
 .hero-button:hover,
 .hero-button:focus {
-  box-shadow: var(--hero-button-shadow);
+  background-color: var(--background-button-active);
 }
 
 .filter-button:hover,
@@ -814,6 +829,10 @@ transition: background-color var(--timing-function), fill var(--timing-function)
   text-transform: uppercase;
 }
 
+.footer-item:last-child {
+  margin-left: auto;
+}
+
 .social-item:not(:last-child) {
   margin-right: 10px;
 }
@@ -828,11 +847,15 @@ transition: background-color var(--timing-function), fill var(--timing-function)
   padding: 15px 0 15px 16px;
   width: 358px;
   height: 50px;
-  background-color: transparent;
+  
   outline: transparent;
   border-radius: 4px;
   border: var(--footer-signup-email);
-  filter: var(--footer-button-shadow)
+  filter: var(--footer-button-shadow);
+
+  background-color: transparent;
+  outline: transparent;
+  color: var(--text-white);
 }
 
 .signup-form-input::placeholder {
@@ -844,17 +867,15 @@ transition: background-color var(--timing-function), fill var(--timing-function)
 
 .signup-form {
   display: flex;
+  gap: 12px;
   align-items: center;
 }
 
 .signup-button {
-  display: flex;
-  margin-left: 12px;
+  gap: 10px;
   padding: 10px;
   padding-left: 29px;
   padding-right: 28px;
-  justify-content: space-between;
-  align-items: center;
 }
 .signup-icon {
   width: 24px;
